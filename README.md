@@ -1,0 +1,21 @@
+# cli apijet
+- apijet create --name projet_name  --port 9090
+    - parmam : name_project , port
+    - create folder structure
+        - name_project
+            - core/
+            - models/
+            - routers/
+            - main.py
+            - \__init__.py
+
+- apijet add endpoint
+    - param : endpoint
+    - create files
+        - name_project
+            - core/endpoint_core.py
+            - models/endpoint_model.py
+            - routers/endpoint_router.py
+    - update main.py
+        - from app.routers.endpoint_router import endpoint_router
+        - app.include_router(endpoint_router)
