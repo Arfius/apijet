@@ -21,9 +21,9 @@ def test_create_projet():
 def test_project_folder_structure():
     folders = ['core', 'models', 'routers']
     for folder in folders:
-        assert Path(f'./test_project/{folder}').is_dir() is True
+        assert Path(f'./test_project/test_project/{folder}').is_dir() is True
 
-    assert Path('./test_project/app.py').is_file() is True
+    assert Path('./test_project/test_project/app.py').is_file() is True
 
 
 def test_folder_already_exist():

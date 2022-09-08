@@ -1,6 +1,4 @@
-from argparse import Namespace
 import argparse
-from shutil import which
 from loguru import logger
 from pathlib import Path
 import json
@@ -16,20 +14,29 @@ def add_parser(sub_parsers: argparse):
     return sub_parsers
 
 
+def _create_setup(name, version):
+    return f"""from setuptools import setup
+setup(
+    name="{name}",
+    version="{version}",
+    author="author",
+    author_email="author@email.com",
+    description=("This project helps to understand about setup.py."),
+    url="www.project.url",
+    license="",
+    packages=[f'{version}']
+)
+"""
+
+
 def create(name: str, port: int, root_dir: str) -> None:
 
+    # check write permission
     if check_write_permission(root_dir) is False:
         return False
 
+    # main folder path
     main_folder = f"{root_dir}/{name}"
-    project_file = f"{main_folder}/{name}.json"
-
-    file_project = {
-        'name': name,
-        'port': port,
-        'folder': main_folder,
-        'project_file': project_file
-    }
 
     # check if folder exists
     if Path(main_folder).is_dir():
@@ -40,15 +47,31 @@ def create(name: str, port: int, root_dir: str) -> None:
     Path(f"{main_folder}").mkdir()
     logger.info(f"Folder projet: {main_folder} create successfully.")
 
-    # create project folders
-    folders = ['core', 'models', 'routers']
-    for folder in folders:
-        logger.info(f"Folder projet: {main_folder}/{folder} create successfully.")
-        Path(f"{main_folder}/{folder}").mkdir()
-
-    # create main.py
-    update_file_with_content(f"{main_folder}/app.py", "")
+    # apiJet file configuration
+    project_file = f"{main_folder}/{name}.json"
+    file_project = {
+        'name': name,
+        'port': port,
+        'folder': main_folder,
+        'project_file': project_file
+    }
 
     # save project file in root project folder
     update_file_with_content(project_file, json.dumps(file_project, indent=4))
+
+    # create project folders
+    Path(f"{main_folder}/{name}").mkdir()
+    logger.info(f"Folder projet: {main_folder} create successfully.")
+
+    folders = ['core', 'models', 'routers']
+    for folder in folders:
+        logger.info(f"Folder projet: {main_folder}/{name}/{folder} create successfully.")
+        Path(f"{main_folder}/{name}/{folder}").mkdir()
+
+    # create main.py
+    update_file_with_content(f"{main_folder}/{name}/app.py", "")
+
+    # create setup.py
+    update_file_with_content(f"{main_folder}/setup.py", _create_setup(name, "0.0.1"))
+
     return True
