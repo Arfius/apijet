@@ -1,8 +1,19 @@
+from argparse import Namespace
+import argparse
+from shutil import which
 from loguru import logger
 from pathlib import Path
 import json
 from apijet.utils.opfile import update_file_with_content
 from apijet.utils.opfile import check_write_permission
+
+
+def add_parser(sub_parsers: argparse):
+    create_parser = sub_parsers.add_parser(name='create', help='Create a new project')
+    create_parser.set_defaults(action='create')
+    create_parser.add_argument('--port', type=int)
+    create_parser.add_argument('--name', type=str)
+    return sub_parsers
 
 
 def create(name: str, port: int, root_dir: str) -> None:
@@ -36,7 +47,7 @@ def create(name: str, port: int, root_dir: str) -> None:
         Path(f"{main_folder}/{folder}").mkdir()
 
     # create main.py
-    update_file_with_content(f"{main_folder}/main.py", "")
+    update_file_with_content(f"{main_folder}/app.py", "")
 
     # save project file in root project folder
     update_file_with_content(project_file, json.dumps(file_project, indent=4))
