@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 from apijet.version import __version__
 setup(
     name="apiJet",
@@ -9,5 +9,9 @@ setup(
     license="BSD",
     keywords="api, cli",
     url="git.url",
-    packages=['apijet', 'tests']
+    packages=find_packages(),
+    install_requires=[i.strip() for i in open("requirements.txt").readlines()],
+    entry_points={
+        'console_scripts': ['apijet=apijet.main:main']
+    }
 )

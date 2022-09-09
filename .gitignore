@@ -20,3 +20,6 @@ docs
 .vscode/settings.json
 temp_frames
 *.zip
+build
+
+apiJet.egg-info
