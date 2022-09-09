@@ -4,17 +4,19 @@ from pathlib import Path
 import json
 from apijet.utils.opfile import update_file_with_content
 from apijet.utils.opfile import check_write_permission
+from apijet.utils.opfile import read_template
 
 
 def add_parser(sub_parsers: argparse):
     create_parser = sub_parsers.add_parser(name='create', help='Create a new project')
     create_parser.set_defaults(action='create')
-    create_parser.add_argument('--port', type=int)
-    create_parser.add_argument('--name', type=str)
+    create_parser.add_argument('--port', type=int, help="port where apis are exposed")
+    create_parser.add_argument('--name', type=str, help="project name")
+    create_parser.add_argument('--address', type=str, help="ip address where apis are exposed")
     return sub_parsers
 
 
-def create(name: str, port: int, root_dir: str) -> None:
+def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
     # check write permission
     if check_write_permission(root_dir) is False:
@@ -33,10 +35,11 @@ def create(name: str, port: int, root_dir: str) -> None:
     logger.info(f"Folder projet: {main_folder} create successfully.")
 
     # apiJet file configuration
-    project_file = f"{main_folder}/{name}.json"
+    project_file = f"{main_folder}/apijet.json"
     file_project = {
         'name': name,
         'port': port,
+        'address': address,
         'folder': main_folder,
         'project_file': project_file
     }
@@ -54,6 +57,8 @@ def create(name: str, port: int, root_dir: str) -> None:
         Path(f"{main_folder}/{name}/{folder}").mkdir()
 
     # create main.py
-    update_file_with_content(f"{main_folder}/{name}/app.py", "")
+    app_content = read_template('app')
+    app_content = app_content.format(address=address, port=port)
+    update_file_with_content(f"{main_folder}/{name}/app.py", app_content)
 
     return True

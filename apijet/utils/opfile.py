@@ -1,9 +1,10 @@
 from loguru import logger
 from pathlib import Path
 import os
+import json
 
 
-def update_file_with_content(file_path: str, content: str):
+def update_file_with_content(file_path: str, content: str) -> None:
     try:
         f = open(file_path, "a")
         f.write(content)
@@ -13,13 +14,13 @@ def update_file_with_content(file_path: str, content: str):
         logger.warning(f"Error during write file - {e}.")
 
 
-def check_write_permission(folder_path: str):
+def check_write_permission(folder_path: str) -> bool:
     write_permission = os.access(folder_path, os.W_OK)
     logger.info(f"Folder {folder_path} write permission {write_permission}")
     return write_permission
 
 
-def remove_project(file_path: str):
+def remove_project(file_path: str) -> bool:
     pth = Path(file_path)
     for child in pth.glob('*'):
         if child.is_file():
@@ -28,3 +29,13 @@ def remove_project(file_path: str):
             remove_project(child)
     pth.rmdir()
     return Path(file_path).is_dir() is False
+
+
+def load_project_file(file_path: str) -> dict:
+    return json.loads(open(file_path, "r").read())
+
+
+def read_template(template_name: str) -> str:
+    path = f"{os.path.dirname(__file__)}/../templates/{template_name}.template.py"
+    logger.info(path)
+    return open(path, "r").read()
