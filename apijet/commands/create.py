@@ -14,21 +14,6 @@ def add_parser(sub_parsers: argparse):
     return sub_parsers
 
 
-def _create_setup(name, version):
-    return f"""from setuptools import setup
-setup(
-    name="{name}",
-    version="{version}",
-    author="author",
-    author_email="author@email.com",
-    description=("This project helps to understand about setup.py."),
-    url="www.project.url",
-    license="",
-    packages=[f'{version}']
-)
-"""
-
-
 def create(name: str, port: int, root_dir: str) -> None:
 
     # check write permission
@@ -70,8 +55,5 @@ def create(name: str, port: int, root_dir: str) -> None:
 
     # create main.py
     update_file_with_content(f"{main_folder}/{name}/app.py", "")
-
-    # create setup.py
-    update_file_with_content(f"{main_folder}/setup.py", _create_setup(name, "0.0.1"))
 
     return True
