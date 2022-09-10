@@ -66,4 +66,9 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     app_content = app_content.format(database_name=name)
     update_file_with_content(f"{main_folder}/{name}/database/dbmanager.py", app_content)
 
+    # create pyobjectid.py
+    app_content = read_template('pyobjectid')
+    app_content = app_content.format(database_name=name)
+    update_file_with_content(f"{main_folder}/{name}/database/pyobjectid.py", app_content)
+
     return True

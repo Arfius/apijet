@@ -6,7 +6,7 @@ import json
 
 def update_file_with_content(file_path: str, content: str) -> None:
     try:
-        f = open(file_path, "a")
+        f = open(file_path, "w")
         f.write(content)
         f.close()
         logger.info(f"File {file_path} create successfully.")

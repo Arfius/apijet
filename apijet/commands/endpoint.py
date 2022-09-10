@@ -39,9 +39,13 @@ def add(name: str, root_dir: str) -> bool:
     update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", "")
     logger.info(f"Core for {name} endpoint created.")
 
-    update_file_with_content(f"{root_dir}/{project_name}/models/{name}.py", "")
+    model_content = read_template('model')
+    model_content = model_content.format(endpoint_name=collection, project_name=project_name)
+    update_file_with_content(f"{root_dir}/{project_name}/models/{name}.py", model_content)
     logger.info(f"Model for {name} endpoint created.")
 
+    router_content = read_template('router')
+    router_content = router_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", "")
     logger.info(f"Router for {name} endpoint created.")
 
