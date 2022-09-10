@@ -71,4 +71,9 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     app_content = app_content.format(database_name=name)
     update_file_with_content(f"{main_folder}/{name}/database/pyobjectid.py", app_content)
 
+    # create message.py
+    app_content = read_template('message')
+    app_content = app_content.format(database_name=name)
+    update_file_with_content(f"{main_folder}/{name}/database/message.py", app_content)
+
     return True

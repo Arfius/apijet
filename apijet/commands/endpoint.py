@@ -38,7 +38,6 @@ def add(name: str, root_dir: str) -> bool:
 
     core_content = read_template('core')
     core_content = core_content.format(endpoint_name=collection, project_name=project_name)
-    print(core_content)
     update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", core_content)
     logger.info(f"Core for {name} endpoint created.")
 
