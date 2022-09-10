@@ -4,6 +4,7 @@ from pathlib import Path
 import os
 from apijet.utils.opfile import load_project_file
 from apijet.utils.opfile import update_file_with_content
+from apijet.utils.opfile import read_template
 
 
 def add_parser(sub_parsers: argparse):
@@ -28,8 +29,11 @@ def add(name: str, root_dir: str) -> bool:
     project_file = load_project_file(project_file_path)
     logger.info(f"Project {project_file['name']} loaded.")
     project_name = project_file['name']
+    collection = name
 
-    update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", "")
+    database_content = read_template('database')
+    database_content = database_content.format(collection=collection, project_name=project_name)
+    update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", database_content)
     logger.info(f"Collection Manager for {name} endpoint created.")
 
     update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", "")

@@ -1,13 +1,8 @@
-from pymongo import MongoClient
+from {project_name}.database.dbmanager import db
 
-db_name={database_name}
-collection = {collection}
-db = MongoClient({database_url})[db_name]
-
-
-def create_{endpoint}(data:dict()):
-
+def create_{collection}(data: dict):
+    return db['{collection}'].insert_one(data)
    
 
-def read__{endpoint}_by_id(_id: str):
-    return db[{collection}].find_one({'_id':_id})
+def read_{collection}_by_id(_id: str):
+    return db['{collection}'].find_one({{'_id':'_id'}})

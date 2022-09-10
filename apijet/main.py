@@ -16,7 +16,7 @@ current_path = os.getcwd()
 def main():
     args = parser.parse_args()
     if args.action == 'create':
-        create(args.name, args.port, args.address, current_path)
+        create(args.name, args.port, args.address, args.database, current_path)
     elif args.action == 'endpoint':
         if args.add:
             add(args.add, current_path)
