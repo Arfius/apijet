@@ -1,26 +1,33 @@
 # apijet CLI ✈️ 
 **A command line tool to deploy python RestApi in few steps.**
-![Alt Text](example.gif)
 
-#### What it does
-Apijet permits to create a python project and manage RestApi endpoints.
+
+![Alt Text](example.gif)
 
 #### Design pattern
 Apijet generates the code for each endpoint following below design pattern.
 
 **Core** : Manipulate data. Put here the business logic of your endpoint.
+
 🔃
+
 **Model** : It is the data structure of your endpoint. Edit this file to customise your entity. 
+
 🔃
+
 **Router** : RestApi component that interact with external word. Expose the CRUD endoints for the model.
 
 
 #### Development stack
 
 **MongoDB** : Document database - [🔗](https://www.mongodb.com/)
+
 **Pymongo** : Python library for working with MongoDB - [🔗](https://pymongo.readthedocs.io/en/stable/)
+
 **FastApi** : RestApi framework -[🔗](https://fastapi.tiangolo.com/)
+
 **Pydantic** : Python data validator & more - [🔗](https://pydantic-docs.helpmanual.io/)
+
 **Uvicorn** : ASGI web server implementation for Python - [🔗](https://www.uvicorn.org/)
 
 
