@@ -39,9 +39,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     file_project = {
         'name': name,
         'port': port,
-        'address': address,
-        'folder': main_folder,
-        'project_file': project_file
+        'address': address
     }
 
     # save project file in root project folder
