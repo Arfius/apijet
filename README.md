@@ -8,6 +8,10 @@
 ### Design pattern
 Apijet generates the code following below design pattern.
 
+- **Database** : Query the database. Write here the NoSQL queries for the endpoint.
+
+  🔃
+
 - **Core** : Manipulate data. Put here the business logic of your endpoint.
 
   🔃
