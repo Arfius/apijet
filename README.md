@@ -86,4 +86,4 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:1234 (Press CTRL+C to quit)
 ```
-To get access to the interactive-api-docs follow this [link](https://fastapi.tiangolo.com/#interactive-api-docs)
+To get access to the interactive-api-docs follow this [link](https://fastapi.tiangolo.com/#interactive-api-docs), for example @ http://0.0.0.0:1234/docs
