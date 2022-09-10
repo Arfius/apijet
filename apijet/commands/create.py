@@ -18,6 +18,9 @@ def add_parser(sub_parsers: argparse):
 
 def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
+    # sanitise project name
+    name = name.strip().replace(' ', '_')
+
     # check write permission
     if check_write_permission(root_dir) is False:
         return False
