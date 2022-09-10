@@ -8,11 +8,21 @@ from apijet.utils.opfile import read_template
 
 
 def add_parser(sub_parsers: argparse):
-    create_parser = sub_parsers.add_parser(name='endpoint', help='add an endpoint to the project')
+    create_parser = sub_parsers.add_parser(name='endpoint', help='Add or Remove an endpoint to the project')
     create_parser.set_defaults(action='endpoint')
     create_parser.add_argument('--add', type=str, help="endpoint name")
     create_parser.add_argument('--remove', type=str, help="endpoint name")
     return sub_parsers
+
+
+def append_text_to_file_with_key(file_path, key, text):
+    file_content = open(file_path, "r").readlines()
+    for x in range(0, len(file_content)):
+        if key in file_content[x]:
+            file_content.insert(x+1, text+'\n')
+            break
+    content = ''.join(file_content)
+    update_file_with_content(file_path, content)
 
 
 def add(name: str, root_dir: str) -> bool:
@@ -51,4 +61,9 @@ def add(name: str, root_dir: str) -> bool:
     update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", router_content)
     logger.info(f"Router for {name} endpoint created.")
 
+    append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-import",
+                                    f"from routers.{name} import {name}_router")
+
+    append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-include",
+                                    f"app.include_router({name}_router)")
     return True

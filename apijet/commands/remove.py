@@ -5,7 +5,7 @@ from apijet.utils.opfile import remove_project
 
 
 def add_parser(sub_parsers: argparse):
-    create_parser = sub_parsers.add_parser(name='remove', help='remove a project')
+    create_parser = sub_parsers.add_parser(name='remove', help='Remove a project')
     create_parser.set_defaults(action='remove')
     create_parser.add_argument('--name', type=str, help="project name")
     return sub_parsers
