@@ -6,7 +6,7 @@
 
 
 ### Design pattern
-Apijet generates the code for each endpoint following below design pattern.
+Apijet generates the code following below design pattern.
 
 - **Core** : Manipulate data. Put here the business logic of your endpoint.
 
@@ -63,6 +63,18 @@ optional arguments:
 
 $> apijet create --name myApi --address 0.0.0.0 --port 1234
 $> cd myApi
+$> ls 
+.
+|-- myApi
+|   |-- core
+|   |-- database
+|   |   |-- dbmanager.py
+|   |   |-- message.py
+|   |   `-- pyobjectid.py
+|   |-- models
+|   |-- routers
+|   `-- app.py
+`-- apijet.json
 ```
 
 ### Add an endpoint
@@ -75,7 +87,26 @@ optional arguments:
   --add ADD        endpoint name
   --remove REMOVE  endpoint name
   
-$> apijet endpoint --add myEndpoint 
+$> apijet endpoint --add myEndpoint
+$> ls 
+.
+|-- myApi
+|   |-- core
+|   |   |
+|   |   `-- myEndpoint.py
+|   |-- database
+|   |   |-- dbmanager.py
+|   |   |-- message.py
+|   |   |-- myEndpoint.py
+|   |   `-- pyobjectid.py
+|   |-- models
+|   |   |
+|   |   `-- myEndpoint.py
+|   |-- routers
+|   |   |
+|   |   `-- myEndpoint.py
+|   `-- app.py
+`-- apijet.json
 ```
 ### Deploy
 
