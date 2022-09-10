@@ -4,7 +4,8 @@
 
 ![Alt Text](example.gif)
 
-#### Design pattern
+
+### Design pattern
 Apijet generates the code for each endpoint following below design pattern.
 
 **Core** : Manipulate data. Put here the business logic of your endpoint.
@@ -18,7 +19,7 @@ Apijet generates the code for each endpoint following below design pattern.
 **Router** : RestApi component that interact with external word. Expose the CRUD endoints for the model.
 
 
-#### Development stack
+### Development stack
 
 **MongoDB** : Document database - [🔗](https://www.mongodb.com/)
 
