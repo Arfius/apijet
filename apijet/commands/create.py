@@ -51,7 +51,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     Path(f"{main_folder}/{name}").mkdir()
     logger.info(f"Folder projet: {main_folder} create successfully.")
 
-    folders = ['core', 'models', 'routers']
+    folders = ['core', 'models', 'routers', 'database']
     for folder in folders:
         logger.info(f"Folder projet: {main_folder}/{name}/{folder} create successfully.")
         Path(f"{main_folder}/{name}/{folder}").mkdir()

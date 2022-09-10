@@ -29,6 +29,9 @@ def add(name: str, root_dir: str) -> bool:
     logger.info(f"Project {project_file['name']} loaded.")
     project_name = project_file['name']
 
+    update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", "")
+    logger.info(f"Collection Manager for {name} endpoint created.")
+
     update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", "")
     logger.info(f"Core for {name} endpoint created.")
 

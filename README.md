@@ -1,15 +1,17 @@
 # cli apijet
-- apijet create --name projet_name  --port 9090
-    - parmam : name_project , port
+- apijet create --name projet_name  --port 9090 --address 127.0.0.1 --dep pip
+    - parmam : name_project , port, addreess
     - create folder structure
         - name_project
             - core/
             - models/
             - routers/
+            - database/
             - main.py
-            - \__init__.py
+            - \__init\__.py
+    - install dependecies
 
-- apijet add endpoint
+- apijet add endpoint --name name_endpoint
     - param : endpoint
     - create files
         - name_project

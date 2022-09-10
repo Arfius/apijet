@@ -30,3 +30,6 @@ def test_project_folder_structure():
 # def test_folder_already_exist():
 #     assert create('test_project', 5083, '127.0.0.1', './') is False
 #     assert remove_project('./test_project') is True
+
+def test_make_snake_case_project_name():
+    pass
