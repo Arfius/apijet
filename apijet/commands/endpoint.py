@@ -36,7 +36,10 @@ def add(name: str, root_dir: str) -> bool:
     update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", database_content)
     logger.info(f"Collection Manager for {name} endpoint created.")
 
-    update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", "")
+    core_content = read_template('core')
+    core_content = core_content.format(endpoint_name=collection, project_name=project_name)
+    print(core_content)
+    update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", core_content)
     logger.info(f"Core for {name} endpoint created.")
 
     model_content = read_template('model')
@@ -46,7 +49,7 @@ def add(name: str, root_dir: str) -> bool:
 
     router_content = read_template('router')
     router_content = router_content.format(endpoint_name=collection, project_name=project_name)
-    update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", "")
+    update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", router_content)
     logger.info(f"Router for {name} endpoint created.")
 
     return True
