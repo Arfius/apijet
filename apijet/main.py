@@ -28,4 +28,4 @@ def main():
         logger.info("Are you sure you want to delete the project?")
         answer = input("[y/N]")
         if answer.lower() == 'y':
-            remove()
+            remove(current_path)
