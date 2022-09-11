@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from project import info
 
 # apijet-router-import - auto-generated code do not remove this comment
 
@@ -17,7 +18,7 @@ app.add_middleware(
 
 
 def start():
-    uvicorn.run(app, host="{address}", port={port})
+    uvicorn.run(app, host=info['address'], port=info['port'])
 
 
 if __name__ == "__main__":
