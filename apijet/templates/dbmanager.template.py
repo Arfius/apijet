@@ -1,2 +1,3 @@
 from pymongo import MongoClient
-db = MongoClient("mongodb://127.0.0.1:27017")["{database_name}"]
+from project import info
+db = MongoClient(f"mongodb://{info['mongo_address']}:{info['mongo_port']}")[f"{info['name']}"]

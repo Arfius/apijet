@@ -42,7 +42,9 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     file_project = {
         'name': name,
         'port': port,
-        'address': address
+        'address': address,
+        'mongo_address':'127.0.0.1',
+        'mongo_port':27017
     }
 
     # save project file in root project folder
@@ -65,7 +67,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
     # create dbmanager.py
     app_content = read_template('dbmanager')
-    app_content = app_content.format(database_name=name)
+    # app_content = app_content.format(database_name=name)
     update_file_with_content(f"{main_folder}/{name}/database/dbmanager.py", app_content)
 
     # create pyobjectid.py
