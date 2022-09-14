@@ -11,11 +11,12 @@ def test_parser():
     add_parser(sub_parsers)
     name_space = parser.parse_args(['endpoint', '--add', 'test_endpoint'])
     assert name_space.add == 'test_endpoint'
+    assert name_space.database == False
 
 
 def test_add_endpoint():
     assert create('test_project', 5083, '127.0.0.1', './') is True
-    assert add('test_endpoint', './test_project') is True
+    assert add('test_endpoint', './test_project', True) is True
 
 
 def test_remove():

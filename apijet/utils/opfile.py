@@ -39,3 +39,13 @@ def read_template(template_name: str) -> str:
     path = f"{os.path.dirname(__file__)}/../templates/{template_name}.template.py"
     logger.info(path)
     return open(path, "r").read()
+
+
+def append_text_to_file_with_key(file_path, key, text):
+    file_content = open(file_path, "r").readlines()
+    for x in range(0, len(file_content)):
+        if key in file_content[x]:
+            file_content.insert(x+1, text+'\n')
+            break
+    content = ''.join(file_content)
+    update_file_with_content(file_path, content)

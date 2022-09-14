@@ -5,27 +5,19 @@ import os
 from apijet.utils.opfile import load_project_file
 from apijet.utils.opfile import update_file_with_content
 from apijet.utils.opfile import read_template
+from apijet.utils.opfile import append_text_to_file_with_key
 
 
 def add_parser(sub_parsers: argparse):
     create_parser = sub_parsers.add_parser(name='endpoint', help='Add or Remove an endpoint to the project')
     create_parser.set_defaults(action='endpoint')
     create_parser.add_argument('--add', type=str, help="endpoint name")
+    create_parser.add_argument('--database', action='store_true', help="endpoint name")
     create_parser.add_argument('--remove', type=str, help="endpoint name")
     return sub_parsers
 
 
-def append_text_to_file_with_key(file_path, key, text):
-    file_content = open(file_path, "r").readlines()
-    for x in range(0, len(file_content)):
-        if key in file_content[x]:
-            file_content.insert(x+1, text+'\n')
-            break
-    content = ''.join(file_content)
-    update_file_with_content(file_path, content)
-
-
-def add(name: str, root_dir: str) -> bool:
+def add(name: str, root_dir: str, database:bool) -> bool:
     # main folder path
     logger.info(f"{os.getcwd()}")
     project_file_path = f"{root_dir}/apijet.json"
