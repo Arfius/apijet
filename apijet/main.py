@@ -23,7 +23,7 @@ def main():
         create(args.name, args.port, args.address, current_path)
     elif args.action == 'endpoint':
         if args.add:
-            add(args.add, current_path)
+            add(args.add, current_path,  args.database)
     elif args.action == 'remove':
         logger.info("Are you sure you want to delete the project?")
         answer = input("[y/N]")

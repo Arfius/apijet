@@ -8,9 +8,10 @@
 *.sln
 *.sw?
 
-
-__pycache__
-**/__pycache__/*
+*.pyc
+*/*/*/__pycache__/
+*/*/__pycache__/
+*/__pycache__/
 *.pyc
 **.pyc
 reports

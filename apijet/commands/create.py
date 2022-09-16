@@ -42,7 +42,9 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     file_project = {
         'name': name,
         'port': port,
-        'address': address
+        'address': address,
+        'mongo_address': '127.0.0.1',
+        'mongo_port': 27017
     }
 
     # save project file in root project folder
@@ -56,15 +58,16 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     for folder in folders:
         logger.info(f"Folder projet: {main_folder}/{name}/{folder} create successfully.")
         Path(f"{main_folder}/{name}/{folder}").mkdir()
+        update_file_with_content(f"{main_folder}/{name}/{folder}/__init__.py", "")
 
-    # create main.py
+    # create app.py
     app_content = read_template('app')
-    app_content = app_content.format(address=address, port=port)
     update_file_with_content(f"{main_folder}/{name}/app.py", app_content)
+    update_file_with_content(f"{main_folder}/{name}/__init__.py", "")
 
     # create dbmanager.py
     app_content = read_template('dbmanager')
-    app_content = app_content.format(database_name=name)
+    # app_content = app_content.format(database_name=name)
     update_file_with_content(f"{main_folder}/{name}/database/dbmanager.py", app_content)
 
     # create pyobjectid.py
@@ -72,9 +75,13 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     app_content = app_content.format(database_name=name)
     update_file_with_content(f"{main_folder}/{name}/database/pyobjectid.py", app_content)
 
-    # create message.py
-    app_content = read_template('message')
+    # create message_db.py
+    app_content = read_template('message_db')
     app_content = app_content.format(database_name=name)
-    update_file_with_content(f"{main_folder}/{name}/database/message.py", app_content)
+    update_file_with_content(f"{main_folder}/{name}/models/message_db.py", app_content)
+
+    # create info.py
+    app_content = read_template('project')
+    update_file_with_content(f"{main_folder}/{name}/project.py", app_content)
 
     return True
