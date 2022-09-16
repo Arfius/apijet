@@ -23,5 +23,5 @@ def test_add_endpoint_no_database():
     assert add('test_endpoint_no_db', './test_project', False) is True
 
 
-# def test_remove():
-#     assert remove_project('./test_project') is True
+def test_remove():
+    assert remove_project('./test_project') is True
