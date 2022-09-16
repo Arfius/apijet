@@ -59,16 +59,16 @@ Apijet projct folder containes the auto-generated python code. The code is arran
   <img src="pattern.png" width="440" />
 </div>
 
-##### Router 
+#### Router 
 Files created as router expose the endpoints, they receive the user request and send back the response.
 
-##### Core
+#### Core
 Files as core implement the bussines logic. Your algorithms and data processing stuffs go here.
 
-##### Repository
+#### Repository
 Files as repository make the interaction with the database. Your queries goes here.
 
-##### Models
+#### Models
 For each endpoint, core, repository, router communicate throught data structure. The data structure is located in the models folder. You modify this file with the parameters you need to handle in your project.
 
  <p align="center">
