@@ -20,7 +20,7 @@ def test_create_projet():
 
 
 def test_project_folder_structure():
-    folders = ['core', 'models', 'routers', 'database']
+    folders = ['core', 'models', 'routers', 'repository']
     for folder in folders:
         assert Path(f'./test_project/test_project/{folder}').is_dir() is True
 

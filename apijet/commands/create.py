@@ -54,7 +54,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     Path(f"{main_folder}/{name}").mkdir()
     logger.info(f"Folder projet: {main_folder} create successfully.")
 
-    folders = ['core', 'models', 'routers', 'database']
+    folders = ['core', 'models', 'routers', 'repository']
     for folder in folders:
         logger.info(f"Folder projet: {main_folder}/{name}/{folder} create successfully.")
         Path(f"{main_folder}/{name}/{folder}").mkdir()
@@ -68,12 +68,12 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     # create dbmanager.py
     app_content = read_template('dbmanager')
     # app_content = app_content.format(database_name=name)
-    update_file_with_content(f"{main_folder}/{name}/database/dbmanager.py", app_content)
+    update_file_with_content(f"{main_folder}/{name}/repository/dbmanager.py", app_content)
 
     # create pyobjectid.py
     app_content = read_template('pyobjectid')
     app_content = app_content.format(database_name=name)
-    update_file_with_content(f"{main_folder}/{name}/database/pyobjectid.py", app_content)
+    update_file_with_content(f"{main_folder}/{name}/repository/pyobjectid.py", app_content)
 
     # create message_db.py
     app_content = read_template('message_db')

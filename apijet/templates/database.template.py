@@ -1,4 +1,4 @@
-from database.dbmanager import db
+from repository.dbmanager import db
 from bson import ObjectId
 
 
