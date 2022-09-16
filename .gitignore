@@ -24,3 +24,4 @@ temp_frames
 build
 
 apiJet.egg-info
+output/
