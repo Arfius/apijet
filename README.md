@@ -1,5 +1,6 @@
 # apijet CLI ✈️ 
 **A command line tool to deploy python RestApi in few steps.**
+![ci/cd](https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg)
 
 
 ![Alt Text](example.gif)
