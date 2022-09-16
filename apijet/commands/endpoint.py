@@ -33,22 +33,24 @@ def add(name: str, root_dir: str, database:bool) -> bool:
     project_name = project_file['name']
     collection = name
 
-    database_content = read_template('database')
-    database_content = database_content.format(collection=collection, project_name=project_name)
-    update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", database_content)
-    logger.info(f"Collection Manager for {name} endpoint created.")
+    if database:
+        database_content = read_template('database')
+        database_content = database_content.format(collection=collection, project_name=project_name)
+        update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", database_content)
+        logger.info(f"Collection Manager for {name} endpoint created.")
 
-    core_content = read_template('core')
+    has_db = '_db' if database else ''
+    core_content = read_template(f'core{has_db}')
     core_content = core_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", core_content)
     logger.info(f"Core for {name} endpoint created.")
 
-    model_content = read_template('model')
+    model_content = read_template(f'model{has_db}')
     model_content = model_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/models/{name}.py", model_content)
     logger.info(f"Model for {name} endpoint created.")
 
-    router_content = read_template('router')
+    router_content = read_template(f'router{has_db}')
     router_content = router_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", router_content)
     logger.info(f"Router for {name} endpoint created.")

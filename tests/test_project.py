@@ -15,6 +15,11 @@ def test_get_info_project():
     assert info['address'] == '127.0.0.1'
 
 
+# fork process and get PID
+# do test
+# kill PID
+
+
 def test_remove_project():
     os.chdir('../')
     assert remove('./test_project') is True

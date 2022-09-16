@@ -14,10 +14,14 @@ def test_parser():
     assert name_space.database == False
 
 
-def test_add_endpoint():
+def test_add_endpoint_database():
     assert create('test_project', 5083, '127.0.0.1', './') is True
     assert add('test_endpoint', './test_project', True) is True
 
 
-def test_remove():
-    assert remove_project('./test_project') is True
+def test_add_endpoint_no_database():
+    assert add('test_endpoint_no_db', './test_project', False) is True
+
+
+# def test_remove():
+#     assert remove_project('./test_project') is True
