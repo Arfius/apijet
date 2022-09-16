@@ -43,8 +43,8 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
         'name': name,
         'port': port,
         'address': address,
-        'mongo_address':'127.0.0.1',
-        'mongo_port':27017
+        'mongo_address': '127.0.0.1',
+        'mongo_port': 27017
     }
 
     # save project file in root project folder

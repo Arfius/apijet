@@ -11,7 +11,7 @@ def test_parser():
     add_parser(sub_parsers)
     name_space = parser.parse_args(['endpoint', '--add', 'test_endpoint'])
     assert name_space.add == 'test_endpoint'
-    assert name_space.database == False
+    assert name_space.database is False
 
 
 def test_add_endpoint_database():

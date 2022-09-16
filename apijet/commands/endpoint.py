@@ -9,7 +9,8 @@ from apijet.utils.opfile import append_text_to_file_with_key
 
 
 def add_parser(sub_parsers: argparse):
-    create_parser = sub_parsers.add_parser(name='endpoint', help='Add or Remove an endpoint to the project')
+    create_parser = sub_parsers.add_parser(name='endpoint', help='Add or Remove an endpoint\
+to the project')
     create_parser.set_defaults(action='endpoint')
     create_parser.add_argument('--add', type=str, help="endpoint name")
     create_parser.add_argument('--database', action='store_true', help="endpoint name")
@@ -17,7 +18,7 @@ def add_parser(sub_parsers: argparse):
     return sub_parsers
 
 
-def add(name: str, root_dir: str, database:bool) -> bool:
+def add(name: str, root_dir: str, database: bool) -> bool:
     # main folder path
     logger.info(f"{os.getcwd()}")
     project_file_path = f"{root_dir}/apijet.json"
@@ -35,7 +36,8 @@ def add(name: str, root_dir: str, database:bool) -> bool:
 
     if database:
         database_content = read_template('database')
-        database_content = database_content.format(collection=collection, project_name=project_name)
+        database_content = database_content.format(collection=collection,
+                                                   project_name=project_name)
         update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", database_content)
         logger.info(f"Collection Manager for {name} endpoint created.")
 
@@ -56,8 +58,8 @@ def add(name: str, root_dir: str, database:bool) -> bool:
     logger.info(f"Router for {name} endpoint created.")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-import",
-                                    f"from routers.{name} import {name}_router")
+                                 f"from routers.{name} import {name}_router")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-include",
-                                    f"app.include_router({name}_router)")
+                                 f"app.include_router({name}_router)")
     return True
