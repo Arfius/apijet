@@ -1,30 +1,54 @@
-# apijet CLI ✈️ 
-**A command line tool to deploy python RestApi in few steps.**
-![ci/cd](https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg)
+<div align="center">
+  <img src="apijet.png" width="360" />
+</div>
 
+<div align="center">
+  ⚙ <strong>A command line tool to deploy python RestApi in few steps.  </strong> ⚙
+</div>
+<br/>
+
+<p align="center">
+  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg">
+    <img src="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg" alt="ci/cd" style="max-width: 100%;"/>
+  </a>
+
+  <a target="_blank"  href="https://twitter.com/alfarruggia">
+    <img src="https://img.shields.io/twitter/follow/alfarruggia"/>
+  </a>
+  
+  <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 how to use </a>
+
+</p>
+
+---
+
+
+Apijet permits to create and manage a python backend project via command line.
+
+Apijet is python framework for building APIs via command line.
+Apijet is a work in progress project, everyone can contribute is wellcome.
+Apijet generates python code following the below pattern.
+
+<table style="{border:0px}">
+<tr>
+	<td>
+		<img src="pattern.png" width="360" />
+	</td>
+	<td> 
+		<h5> Router </h5> Expose the Endpoints. Receive the user request.
+		<h5> Core </h5> Implement the bussines logic.
+		<h5> Repository </h5> Database interaction layer.
+	</td>
+</tr>
+<table>
+
+---
 
 ![Alt Text](example.gif)
 
+---
 
-### Design pattern
-Apijet generates the code following below design pattern.
-
-- **Database** : Query the database. Write here the NoSQL queries for the endpoint.
-
-  🔃
-
-- **Core** : Manipulate data. Put here the business logic of your endpoint.
-
-  🔃
-
-- **Model** : It is the data structure of your endpoint. Edit this file to customise your entity. 
-
-  🔃
-
-- **Router** : RestApi component that interact with external word. Expose the CRUD endoints for the model.
-
-
-### Development stack
+The development stack used to create the autogenerate code exploit the following technologies:
 
 - **MongoDB** : Document database - [🔗](https://www.mongodb.com/)
 
