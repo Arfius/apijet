@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  ⚙ <strong>A command line tool to deploy python RestApi in 20 secs.</strong> ⚙
+  ⚙ <strong>A command line tool to deploy python Rest APIS in 20 secs.</strong> ⚙
 </div>
 <br/>
 
@@ -25,9 +25,9 @@
 
 ---
 
-Apijet is python framework for building APIs via command line.
+Apijet is a Python framework for building APIs via command line.
 
-You will be able to deploy and endpoint following these 5 steps:
+You will be able to deploy an endpoint following these 5 steps:
 
 1. **Install apijet**
 ```
@@ -39,7 +39,7 @@ $> apijet create --name my_projet --port 9090 --address 127.0.0.1
 $> cd my_projet
 ```
 3. **Add and endpoint.**
-The endpoint can also need the database support, in this case pass **--database**
+The endpoint can also need database support, in this case, you pass the **--database** parameter.
 ```
 $> apijet endpoint --name my_endpoint
 ```
@@ -53,27 +53,28 @@ $> python my_projet/app.py
 
 ## Source code and pattern.
 
-Apijet projct folder containes the auto-generated python code. The code is arranged in four folders: core, repository, router and model. When a new endpoint is added, a new file in each of these four folders is created. These four files have the same name of the endpoint but they have different behaviour, with respect to the following pattern.
+Apijet project folder contains the auto-generated python code. The code is arranged in four folders: core, repository, router and models. When a new endpoint is added, a new file in each of these four folders is created. These four files have the same name of the endpoint but they have different behaviour, see the following pattern.
 
 <div align="center">
   <img src="pattern.png" width="440" />
 </div>
 
 #### Router 
-Files created as router expose the endpoints, they receive the user request and send back the response.
+Files created as routers expose the endpoints, they receive the user request and send back the response.
 
 #### Core
-Files as core implement the bussines logic. Your algorithms and data processing stuffs go here.
+Files as core implement the business logic. Your algorithms and data processing stuff go here.
 
 #### Repository
-Files as repository make the interaction with the database. Your queries goes here.
+Files as repositories make the interaction with the database. Your queries go here.
 
 #### Models
-For each endpoint, core, repository, router communicate throught data structure. The data structure is located in the models folder. You modify this file with the parameters you need to handle in your project.
+For each endpoint, core, repository, and router communicate through the data structure. The data structure is located in the folder models. You modify this file with the parameters you need to handle in your project.
 
- <p align="center">
+
+<p align="center">
  <br/>
-   <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 Follow this link for the example on how to implement  a backend for a TODO app </a>
+   <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 Follow this link for the example on how to implement a backend for a TODO app </a>
 </p>
 
 ---
