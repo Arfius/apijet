@@ -6,7 +6,7 @@ from project import info
 # apijet-router-import - auto-generated code do not remove this comment
 
 origins = ["*"]
-app = FastAPI()
+app = FastAPI(title=info['name'])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

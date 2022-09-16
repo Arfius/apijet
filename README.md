@@ -1,32 +1,63 @@
-# apijet CLI ✈️ 
-**A command line tool to deploy python RestApi in few steps.**
-![ci/cd](https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg)
+<div align="center">
+  <img src="apijet.png" width="360" />
+</div>
 
+<div align="center">
+  ⚙ <strong>A command line tool to deploy python RestApi in 20 secs.</strong> ⚙
+</div>
+<br/>
+
+<p align="center">
+  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg">
+    <img src="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg" alt="ci/cd" style="max-width: 100%;"/>
+  </a>
+
+  <a target="_blank"  href="https://twitter.com/alfarruggia">
+    <img src="https://img.shields.io/twitter/follow/alfarruggia"/>
+  </a>
+ </p>
+ <p align="center">
+ 
+   <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 how to use </a>
+
+</p>
+
+---
+
+Apijet is python framework for building APIs via command line.
+
+Apijet generates python code following the below pattern.
+
+<table style="{border:0px}">
+<tr>
+	<td>
+		<img src="pattern.png" width="360" />
+	</td>
+	<td> 
+		<h5> Router </h5> Expose the Endpoints. Receive the user request.
+		<h5> Core </h5> Implement the bussines logic.
+		<h5> Repository </h5> Database interaction layer.
+	</td>
+</tr>
+<table>
+
+---
+## Expose an endpoint in 20 secs.
 
 ![Alt Text](example.gif)
 
+---
+## Technologies
 
-### Design pattern
-Apijet generates the code following below design pattern.
-
-- **Database** : Query the database. Write here the NoSQL queries for the endpoint.
-
-  🔃
-
-- **Core** : Manipulate data. Put here the business logic of your endpoint.
-
-  🔃
-
-- **Model** : It is the data structure of your endpoint. Edit this file to customise your entity. 
-
-  🔃
-
-- **Router** : RestApi component that interact with external word. Expose the CRUD endoints for the model.
-
-
-### Development stack
+The code is created exploiting  the following development stack :
 
 - **MongoDB** : Document database - [🔗](https://www.mongodb.com/)
+
+```
+# How to run a mongodb instance via docker container
+$> docker run -d -p 27017:27017 --name my-mongo mongo:latest
+
+``` 
 
 - **Pymongo** : Python library for working with MongoDB - [🔗](https://pymongo.readthedocs.io/en/stable/)
 
@@ -35,6 +66,8 @@ Apijet generates the code following below design pattern.
 - **Pydantic** : Python data validator & more - [🔗](https://pydantic-docs.helpmanual.io/)
 
 - **Uvicorn** : ASGI web server implementation for Python - [🔗](https://www.uvicorn.org/)
+
+## CLI Commands
 
 
 ### Installation
