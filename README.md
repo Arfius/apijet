@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  ⚙ <strong>A command line tool to deploy python RestApi in few steps.  </strong> ⚙
+  ⚙ <strong>A command line tool to deploy python RestApi in 20 secs.</strong> ⚙
 </div>
 <br/>
 
@@ -15,18 +15,17 @@
   <a target="_blank"  href="https://twitter.com/alfarruggia">
     <img src="https://img.shields.io/twitter/follow/alfarruggia"/>
   </a>
-  
-  <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 how to use </a>
+ </p>
+ <p align="center">
+ 
+   <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 how to use </a>
 
 </p>
 
 ---
 
-
-Apijet permits to create and manage a python backend project via command line.
-
 Apijet is python framework for building APIs via command line.
-Apijet is a work in progress project, everyone can contribute is wellcome.
+
 Apijet generates python code following the below pattern.
 
 <table style="{border:0px}">
@@ -43,14 +42,22 @@ Apijet generates python code following the below pattern.
 <table>
 
 ---
+## Expose an endpoint in 20 secs.
 
 ![Alt Text](example.gif)
 
 ---
+## Technologies
 
-The development stack used to create the autogenerate code exploit the following technologies:
+The code is created exploiting  the following development stack :
 
 - **MongoDB** : Document database - [🔗](https://www.mongodb.com/)
+
+```
+# How to run a mongodb instance via docker container
+$> docker run -d -p 27017:27017 --name my-mongo mongo:latest
+
+``` 
 
 - **Pymongo** : Python library for working with MongoDB - [🔗](https://pymongo.readthedocs.io/en/stable/)
 
@@ -59,6 +66,8 @@ The development stack used to create the autogenerate code exploit the following
 - **Pydantic** : Python data validator & more - [🔗](https://pydantic-docs.helpmanual.io/)
 
 - **Uvicorn** : ASGI web server implementation for Python - [🔗](https://www.uvicorn.org/)
+
+## CLI Commands
 
 
 ### Installation
