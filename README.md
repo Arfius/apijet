@@ -8,6 +8,7 @@
 <br/>
 
 <p align="center">
+  
   <a target="_blank" rel="noopener noreferrer" href="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg">
     <img src="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg" alt="ci/cd" style="max-width: 100%;"/>
   </a>
@@ -15,31 +16,65 @@
   <a target="_blank"  href="https://twitter.com/alfarruggia">
     <img src="https://img.shields.io/twitter/follow/alfarruggia"/>
   </a>
- </p>
- <p align="center">
- 
-   <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 how to use </a>
+</p>
 
+<p align="center">
+  <br/>
+  <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 Example of a backend for a TODO app </a>
 </p>
 
 ---
 
 Apijet is python framework for building APIs via command line.
 
-Apijet generates python code following the below pattern.
+You will be able to deploy and endpoint following these 5 steps:
 
-<table style="{border:0px}">
-<tr>
-	<td>
-		<img src="pattern.png" width="360" />
-	</td>
-	<td> 
-		<h5> Router </h5> Expose the Endpoints. Receive the user request.
-		<h5> Core </h5> Implement the bussines logic.
-		<h5> Repository </h5> Database interaction layer.
-	</td>
-</tr>
-<table>
+1. **Install apijet**
+```
+$> python -m pip install apijet
+```
+2. **Create a project**
+```
+$> apijet create --name my_projet --port 9090 --address 127.0.0.1
+$> cd my_projet
+```
+3. **Add and endpoint.**
+The endpoint can also need the database support, in this case pass **--database**
+```
+$> apijet endpoint --name my_endpoint
+```
+4. **Run the server**
+```
+$> python my_projet/app.py
+```
+5. **Open your browser @ http://127.0.0.1:9090/docs**
+
+
+
+## Source code and pattern.
+
+Apijet projct folder containes the auto-generated python code. The code is arranged in four folders: core, repository, router and model. When a new endpoint is added, a new file in each of these four folders is created. These four files have the same name of the endpoint but they have different behaviour, with respect to the following pattern.
+
+<div align="center">
+  <img src="pattern.png" width="440" />
+</div>
+
+##### Router 
+Files created as router expose the endpoints, they receive the user request and send back the response.
+
+##### Core
+Files as core implement the bussines logic. Your algorithms and data processing stuffs go here.
+
+##### Repository
+Files as repository make the interaction with the database. Your queries goes here.
+
+##### Models
+For each endpoint, core, repository, router communicate throught data structure. The data structure is located in the models folder. You modify this file with the parameters you need to handle in your project.
+
+ <p align="center">
+ <br/>
+   <a style="{text-decoration: none;} " target="_blank"  href="https://medium.com/p/de089348c498"> 🔗 Follow this link for the example on how to implement  a backend for a TODO app </a>
+</p>
 
 ---
 ## Expose an endpoint in 20 secs.
@@ -72,11 +107,11 @@ $> docker run -d -p 27017:27017 --name my-mongo mongo:latest
 
 ### Installation
 ```
-$> pip install -U apijet 
+$> pip install apijet 
 $> apijet -h
 usage: apijet [-h] {create,endpoint,remove} ...
 
-apiJet - Api Generator v: 0.1.2
+apiJet - Api Generator v: 0.2.2
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -84,7 +119,7 @@ optional arguments:
 Actions:
   {create,endpoint,remove}
     create              Create a new project
-    endpoint            Add or Remove an endpoint to the project
+    endpoint            Add or Remove an endpointto the project
     remove              Remove a project
 ```
 
@@ -118,11 +153,12 @@ $> ls
 ### Add an endpoint
 ```
 $> apijet endpoint -h
-usage: apijet endpoint [-h] [--add ADD] [--remove REMOVE]
+usage: apijet endpoint [-h] [--add ADD] [--database] [--remove REMOVE]
 
 optional arguments:
   -h, --help       show this help message and exit
   --add ADD        endpoint name
+  --database       endpoint name
   --remove REMOVE  endpoint name
   
 $> apijet endpoint --add myEndpoint
