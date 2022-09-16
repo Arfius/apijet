@@ -38,7 +38,8 @@ def add(name: str, root_dir: str, database: bool) -> bool:
         database_content = read_template('database')
         database_content = database_content.format(collection=collection,
                                                    project_name=project_name)
-        update_file_with_content(f"{root_dir}/{project_name}/database/{name}.py", database_content)
+        update_file_with_content(f"{root_dir}/{project_name}/repository/{name}.py",
+                                 database_content)
         logger.info(f"Collection Manager for {name} endpoint created.")
 
     has_db = '_db' if database else ''

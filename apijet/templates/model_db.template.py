@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from database.pyobjectid import PyObjectId
+from repository.pyobjectid import PyObjectId
 from bson import ObjectId
 
 

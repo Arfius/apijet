@@ -1,7 +1,7 @@
 from typing import List
 from models.message_db import MessageDB
 from models.{endpoint_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
-from database.{endpoint_name} import get_{endpoint_name}, get_{endpoint_name}_by_id, save_{endpoint_name}
+from repository.{endpoint_name} import get_{endpoint_name}, get_{endpoint_name}_by_id, save_{endpoint_name}
 
 
 class {endpoint_name}Core:
