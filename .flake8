@@ -1,3 +1,3 @@
 [flake8]
 max-line-length = 99
-exclude = ./apijet/templates/*,build,dist,apiJet.egg-info
+exclude = ./apijet/templates/*,build,dist,apijet.egg-info
