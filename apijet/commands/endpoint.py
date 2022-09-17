@@ -26,7 +26,7 @@ def add(name: str, root_dir: str, database: bool) -> bool:
 
     # check if in project folder
     if Path(project_file_path).is_file() is False:
-        logger.warning("This is not an apiJet project.")
+        logger.warning("This is not an apijet project.")
         return False
 
     project_file = load_project_file(project_file_path)

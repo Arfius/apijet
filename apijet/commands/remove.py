@@ -16,7 +16,7 @@ def remove(root_dir: str):
 
     # check if in project folder
     if Path(project_file_path).is_file() is False:
-        logger.warning("This is not an apiJet project.")
+        logger.warning("This is not an apijet project.")
         return False
 
     if remove_project(root_dir) is True:

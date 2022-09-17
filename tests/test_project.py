@@ -16,8 +16,8 @@ def run_project():
     os.chdir('./test_project')
     bashCommand = "python test_project/app.py"
     pid = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE).pid
-    print('wait 2 seconds to warm up the server...')
-    sleep(2)
+    print('wait 5 seconds to warm up the server...')
+    sleep(5)
     yield
     kill(pid, SIGKILL)
     print(f'Process {pid} killed')

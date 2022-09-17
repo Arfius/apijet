@@ -8,8 +8,9 @@ from apijet.commands.remove import remove
 from apijet.commands.remove import add_parser as add_parser_remove
 from apijet.version import __version__
 import os
+import sys
 
-parser = argparse.ArgumentParser(description=f'apiJet - Api Generator v: {__version__}')
+parser = argparse.ArgumentParser(description=f' - Api Generator v: {__version__}')
 sub_parsers = parser.add_subparsers(title="Actions")
 add_parser_create(sub_parsers)
 add_parser_endpoint(sub_parsers)
@@ -18,6 +19,10 @@ current_path = os.getcwd()
 
 
 def main():
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit()
+
     args = parser.parse_args()
     if args.action == 'create':
         create(args.name, args.port, args.address, current_path)

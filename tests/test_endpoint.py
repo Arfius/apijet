@@ -6,7 +6,7 @@ import argparse
 
 
 def test_parser():
-    parser = argparse.ArgumentParser(description='Testing apiJet perser')
+    parser = argparse.ArgumentParser(description='Testing apijet perser')
     sub_parsers = parser.add_subparsers(title="Actions")
     add_parser(sub_parsers)
     name_space = parser.parse_args(['endpoint', '--add', 'test_endpoint'])
