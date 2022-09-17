@@ -12,15 +12,15 @@ import requests
 
 @pytest.fixture
 def run_project():
-    print("Run server")
+    print("🧪> Run server")
     os.chdir('./test_project')
     bashCommand = "python test_project/app.py"
     pid = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE).pid
-    print('wait 5 seconds to warm up the server...')
+    print('🧪> wait 5 seconds to warm up the server...')
     sleep(5)
     yield
     kill(pid, SIGKILL)
-    print(f'Process {pid} killed')
+    print(f'🧪> Process {pid} killed')
     os.chdir('../')
 
 
