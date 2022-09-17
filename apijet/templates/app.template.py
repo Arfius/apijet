@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import subprocess
-from signal import signal
-from signal import SIGKILL
-from os import kill
 from {project_name}.project import info
+import os
+import signal
+from sys import exit
 
 # apijet-router-import - auto-generated code do not remove this comment
 
@@ -21,16 +21,13 @@ app.add_middleware(
 
 # apijet-router-include - auto-generated code do not remove this comment
 
-
-def handler(signal_received, frame):
-    kill(guinicor_pid, SIGKILL)
-    exit(0)
-
 def start():
     if info['workers'] > 1:
-        signal(SIGKILL, handler)
-        command = f"gunicorn -w {{info['workers']}} -b {{info['address']}}:{{info['port']}} {{info['name']}}.app:app"
-        guinicor_pid = subprocess.Popen(command.split(), stdout=subprocess.PIPE).pid
+        command = f"gunicorn -k uvicorn.workers.UvicornWorker -w {{info['workers']}} -b {{info['address']}}:{{info['port']}} {{info['name']}}.app:app"
+        subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+        while True:
+            pass
+
     else:
         uvicorn.run(app, host=info['address'], port=info['port'])
 

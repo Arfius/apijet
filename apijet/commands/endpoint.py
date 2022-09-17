@@ -42,7 +42,7 @@ def add(name: str, root_dir: str, database: bool) -> bool:
         update_file_with_content(f"{root_dir}/{project_name}/repository/{name}.py",
                                  database_content)
         logger.info(f"Collection Manager for {name} endpoint created.")
- 
+
     has_db = '_db' if database else ''
     core_content = read_template(f'core{has_db}')
     core_content = core_content.format(endpoint_name=collection, project_name=project_name)
