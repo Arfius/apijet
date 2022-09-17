@@ -25,6 +25,11 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     if check_write_permission(root_dir) is False:
         return False
 
+    # check if already in a project folder
+    if Path(f"{root_dir}/apijet.json").is_file() is True:
+        logger.warning("You are in an apijet project folder.")
+        return False
+
     # main folder path
     main_folder = f"{root_dir}/{name}"
 
@@ -43,8 +48,14 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
         'name': name,
         'port': port,
         'address': address,
-        'mongo_address': '127.0.0.1',
-        'mongo_port': 27017
+        'mongo': {
+            'auth': False,
+            'address': '127.0.0.1',
+            'port': 27017,
+            'username': '',
+            'password': ''
+        },
+        'endpoints': []
     }
 
     # save project file in root project folder

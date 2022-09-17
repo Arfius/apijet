@@ -2,6 +2,7 @@ import argparse
 from loguru import logger
 from pathlib import Path
 import os
+import json
 from apijet.utils.opfile import load_project_file
 from apijet.utils.opfile import update_file_with_content
 from apijet.utils.opfile import read_template
@@ -63,4 +64,9 @@ def add(name: str, root_dir: str, database: bool) -> bool:
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-include",
                                  f"app.include_router({name}_router)")
+
+    # save project file in root project folder
+    project_file['endpoints'].append(name)
+    update_file_with_content(project_file_path, json.dumps(project_file, indent=4))
+
     return True
