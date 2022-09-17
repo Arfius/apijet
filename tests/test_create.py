@@ -17,7 +17,7 @@ def test_parser():
 
 
 def test_create_projet():
-    assert create('test_project', 5083, '127.0.0,1', './') is True
+    assert create('test_project', 5083, '127.0.0.1', './') is True
 
 
 def test_project_folder_structure():

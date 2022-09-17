@@ -45,7 +45,7 @@ $> apijet endpoint --name my_endpoint
 ```
 4. **Run the server**
 ```
-$> python my_projet/app.py
+$> python -m my_projet.app
 ```
 5. **Open your browser @ http://127.0.0.1:9090/docs**
 
@@ -186,7 +186,7 @@ $> ls
 ### Deploy
 
 ```
-$> python myApi/app.py
+$> python -m myApi.app
 INFO:     Started server process [40471]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.

@@ -5,8 +5,7 @@ from apijet.commands.endpoint import add
 import subprocess
 import os
 import pytest
-from signal import SIGKILL
-from os import kill
+from signal import SIGTERM
 import requests
 
 
@@ -14,14 +13,13 @@ import requests
 def run_project():
     print("🧪> Run server")
     os.chdir('./test_project')
-    bashCommand = "python test_project/app.py"
-    pid = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE).pid
-    print('🧪> wait 5 seconds to warm up the server...')
-    sleep(5)
+    bashCommand = "python -m test_project.app"
+    pro = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE, preexec_fn=os.setsid)
+    print('wait 5 seconds to warm up the server...')
+    sleep(5)  # wait server is up
     yield
-    kill(pid, SIGKILL)
-    print(f'🧪> Process {pid} killed')
-    os.chdir('../')
+    os.killpg(os.getpgid(pro.pid), SIGTERM)
+    sleep(5)  # wait server is down
 
 
 def test_create_projet_with_endpoint():
@@ -40,6 +38,7 @@ def test_get_info_project():
 
 
 def test_reverse_endpoint(run_project):
+    pass
     from test_project.test_project.models.test_endpoint import test_endpointBase
     message = "hello world"
     t_e = test_endpointBase(text=message)
