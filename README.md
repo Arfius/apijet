@@ -25,7 +25,7 @@
 
 ---
 
-Apijet is a Python framework for building APIs via the command line. Apijet is a useful framework for fast prototyping web Rest APIs. Apijet will deploy python code according to the well-defined pattern, you only have to pay attention to the business logic and to the database queries. 
+Apijet is a Python framework for building APIs via the command line. Apijet is a useful framework for fast prototyping Rest APIs. Apijet will deploy python code according to the well-defined pattern [(see here)](#pattern), you only have to pay attention to the business logic and to the database queries. 
 
 You will be able to deploy endpoints following these 5 steps:
 
@@ -99,10 +99,13 @@ where:
   - if __workers__ > 1, __Gunicorn__ will be started otherwise __Unicorn__ as ASGI web server
   - if __mongo.auth__ is true, __mongo.username__ and __mongo.password__ are requested
 
-#### mongodb-container
+<div id="mongodb-container" ></div>
+#### Run MongoDB in a docker contaienr
 If you are a fan of docker and you want to run an instance of MongoDb without stress:
 ```$> docker run -d -p 27017:27017 --name myProject-db mongo:latest```
- 
+
+<div id="pattern" ></div>
+
 ## Source code and pattern.
 
 Apijet project folder contains the auto-generated python code. The code is arranged in four folders: core, repository, router and models. When a new endpoint is added, a new file in each of these four folders is created. These four files have the same name (_/myEndpoint.py_) of the endpoint but they have different behaviour, see the following pattern.
