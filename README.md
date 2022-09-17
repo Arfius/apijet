@@ -103,7 +103,10 @@ where:
 
 #### Run MongoDB in a docker contaienr
 If you are a fan of docker and you want to run an instance of MongoDb without stress:
-```$> docker run -d -p 27017:27017 --name myProject-db mongo:latest```
+
+```
+$> docker run -d -p 27017:27017 --name myProject-db mongo:latest
+```
 
 <div id="pattern" ></div>
 
@@ -172,7 +175,7 @@ Actions:
     remove              Remove a project
 ```
 
-#### Create a projet
+#### Create projet
 ```
 $> apijet create -h
 usage: apijet create [-h] [--port PORT] [--name NAME] [--address ADDRESS]
@@ -184,7 +187,7 @@ optional arguments:
   --address ADDRESS  ip address where apis are exposed
 ```
 
-#### Add an endpoint
+#### Add endpoint
 ```
 $> apijet endpoint -h
 usage: apijet endpoint [-h] [--add ADD] [--database] [--remove REMOVE]

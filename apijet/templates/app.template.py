@@ -11,7 +11,7 @@ from sys import exit
 
 guinicor_pid=None
 origins = ["*"]
-app = FastAPI(title=info['name'])
+app = FastAPI(title=info['name'], version=info['version'])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

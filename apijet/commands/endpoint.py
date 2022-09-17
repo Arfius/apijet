@@ -31,6 +31,11 @@ def add(name: str, root_dir: str, database: bool) -> bool:
         return False
 
     project_file = load_project_file(project_file_path)
+
+    if name in project_file["endpoints"]:
+        print("🛑> This endpoint already exist.")
+        return False
+
     print(f"ℹ️ > Project {project_file['name']} loaded.")
     project_name = project_file['name']
     collection = name
