@@ -1,4 +1,4 @@
-name: apijet
+name: Test
 
 on: [push]
 
