@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from models.{endpoint_name} import {endpoint_name}Base
-from core.{endpoint_name} import {endpoint_name}Core
+from {project_name}.models.{endpoint_name} import {endpoint_name}Base
+from {project_name}.core.{endpoint_name} import {endpoint_name}Core
 
 
 {endpoint_name}_router = APIRouter()

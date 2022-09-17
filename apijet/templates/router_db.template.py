@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import APIRouter, HTTPException, Depends
-from models.{endpoint_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
-from core.{endpoint_name} import {endpoint_name}Core
+from {project_name}.models.{endpoint_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
+from {project_name}.core.{endpoint_name} import {endpoint_name}Core
 
 
 {endpoint_name}_router = APIRouter()
