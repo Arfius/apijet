@@ -1,5 +1,9 @@
 from setuptools import find_packages, setup
 from apijet.version import __version__
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 setup(
     name="apijet",
     version=f"{__version__}",
@@ -14,5 +18,8 @@ setup(
     entry_points={
         'console_scripts': ['apijet=apijet.main:main']
     },
-    license_files=('LICENSE',)
+    license_files=('LICENSE',),
+    python_requires='>=3.8',
+    long_description=long_description,
+    long_description_content_type='text/markdown'
 )
