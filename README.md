@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="apijet.png" width="360" />
+  <img src="https://raw.githubusercontent.com/Arfius/apijet/master/apijet.png" width="360" />
 </div>
 
 <div align="center">
@@ -100,9 +100,13 @@ where:
   - if __mongo.auth__ is true, __mongo.username__ and __mongo.password__ are requested
 
 <div id="mongodb-container" ></div>
+
 #### Run MongoDB in a docker contaienr
 If you are a fan of docker and you want to run an instance of MongoDb without stress:
-```$> docker run -d -p 27017:27017 --name myProject-db mongo:latest```
+
+```
+$> docker run -d -p 27017:27017 --name myProject-db mongo:latest
+```
 
 <div id="pattern" ></div>
 
@@ -111,7 +115,7 @@ If you are a fan of docker and you want to run an instance of MongoDb without st
 Apijet project folder contains the auto-generated python code. The code is arranged in four folders: core, repository, router and models. When a new endpoint is added, a new file in each of these four folders is created. These four files have the same name (_/myEndpoint.py_) of the endpoint but they have different behaviour, see the following pattern.
 
 <div align="center">
-  <img src="pattern.png" width="440" />
+  <img src="https://raw.githubusercontent.com/Arfius/apijet/master/pattern.png" width="440" />
 </div>
 
 #### Router 
@@ -135,7 +139,7 @@ For each endpoint, core, repository, and router communicate through the data str
 ---
 ## Expose an endpoint in 20 secs.
 
-![Alt Text](example.gif)
+![Alt Text](https://raw.githubusercontent.com/Arfius/apijet/master/example.gif)
 
 ---
 ## Dev-Stack
@@ -171,7 +175,7 @@ Actions:
     remove              Remove a project
 ```
 
-#### Create a projet
+#### Create projet
 ```
 $> apijet create -h
 usage: apijet create [-h] [--port PORT] [--name NAME] [--address ADDRESS]
@@ -183,7 +187,7 @@ optional arguments:
   --address ADDRESS  ip address where apis are exposed
 ```
 
-#### Add an endpoint
+#### Add endpoint
 ```
 $> apijet endpoint -h
 usage: apijet endpoint [-h] [--add ADD] [--database] [--remove REMOVE]

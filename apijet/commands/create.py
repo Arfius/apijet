@@ -47,7 +47,8 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
         'name': name,
         'port': port,
         'address': address,
-        'workers': 2,
+        'version': "0.0.1",
+        'workers': 1,
         'mongo': {
             'auth': False,
             'address': '127.0.0.1',
