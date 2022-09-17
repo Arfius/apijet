@@ -14,7 +14,7 @@ import requests
 def run_project():
     print("Run server")
     os.chdir('./test_project')
-    bashCommand = "python test_project/app.py"
+    bashCommand = "python -m test_project.app"
     pid = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE).pid
     print('wait 5 seconds to warm up the server...')
     sleep(5)

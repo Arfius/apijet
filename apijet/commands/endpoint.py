@@ -42,7 +42,7 @@ def add(name: str, root_dir: str, database: bool) -> bool:
         update_file_with_content(f"{root_dir}/{project_name}/repository/{name}.py",
                                  database_content)
         logger.info(f"Collection Manager for {name} endpoint created.")
-
+ 
     has_db = '_db' if database else ''
     core_content = read_template(f'core{has_db}')
     core_content = core_content.format(endpoint_name=collection, project_name=project_name)
@@ -60,7 +60,7 @@ def add(name: str, root_dir: str, database: bool) -> bool:
     logger.info(f"Router for {name} endpoint created.")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-import",
-                                 f"from routers.{name} import {name}_router")
+                                 f"from {project_name}.routers.{name} import {name}_router")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-include",
                                  f"app.include_router({name}_router)")

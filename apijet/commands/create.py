@@ -48,6 +48,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
         'name': name,
         'port': port,
         'address': address,
+        'workers': 1,
         'mongo': {
             'auth': False,
             'address': '127.0.0.1',
@@ -73,12 +74,13 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
     # create app.py
     app_content = read_template('app')
+    app_content = app_content.format(project_name=name)
     update_file_with_content(f"{main_folder}/{name}/app.py", app_content)
     update_file_with_content(f"{main_folder}/{name}/__init__.py", "")
 
     # create dbmanager.py
     app_content = read_template('dbmanager')
-    # app_content = app_content.format(database_name=name)
+    app_content = app_content.format(project_name=name)
     update_file_with_content(f"{main_folder}/{name}/repository/dbmanager.py", app_content)
 
     # create pyobjectid.py

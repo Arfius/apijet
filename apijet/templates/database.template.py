@@ -1,4 +1,4 @@
-from repository.dbmanager import db
+from {project_name}.repository.dbmanager import db
 from bson import ObjectId
 
 
