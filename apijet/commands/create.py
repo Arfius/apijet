@@ -37,7 +37,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     Path(f"{main_folder}").mkdir()
     logger.info(f"Folder projet: {main_folder} create successfully.")
 
-    # apiJet file configuration
+    # apijet file configuration
     project_file = f"{main_folder}/apijet.json"
     file_project = {
         'name': name,

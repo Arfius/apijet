@@ -27,7 +27,7 @@
 
 Apijet is a Python framework for building APIs via command line.
 
-You will be able to deploy an endpoint following these 5 steps:
+You will be able to deploy endpoints following these 5 steps:
 
 1. **Install apijet**
 ```
@@ -49,7 +49,7 @@ $> python my_projet/app.py
 ```
 5. **Open your browser @ http://127.0.0.1:9090/docs**
 
-
+These steps generates a project folder 
 
 ## Source code and pattern.
 
@@ -112,7 +112,7 @@ $> pip install apijet
 $> apijet -h
 usage: apijet [-h] {create,endpoint,remove} ...
 
-apiJet - Api Generator v: 0.2.2
+apijet - Api Generator v: 0.2.2
 
 optional arguments:
   -h, --help            show this help message and exit
