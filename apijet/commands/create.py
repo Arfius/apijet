@@ -25,6 +25,11 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
     if check_write_permission(root_dir) is False:
         return False
 
+    # check if already in a project folder
+    if Path(f"{root_dir}/apijet.json").is_file() is True:
+        logger.warning("You are in an apijet project folder.")
+        return False
+
     # main folder path
     main_folder = f"{root_dir}/{name}"
 

@@ -3,6 +3,7 @@ from apijet.commands.create import add_parser
 from apijet.utils.opfile import remove_project
 from pathlib import Path
 import argparse
+import os
 
 
 def test_parser():
@@ -25,6 +26,12 @@ def test_project_folder_structure():
         assert Path(f'./test_project/test_project/{folder}').is_dir() is True
 
     assert Path('./test_project/test_project/app.py').is_file() is True
+
+
+def test_try_to_create_project_in_a_project_folder():
+    os.chdir('./test_project')
+    assert create('test_project_2', 5083, '127.0.0,1', './') is False
+    os.chdir('../')
 
 
 def test_folder_already_exist():
