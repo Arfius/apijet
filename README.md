@@ -58,7 +58,7 @@ $> apijet endpoint --name myEndpoint
 ```
 4. **Run the server**
 ```
-$> python -m my_projet.app
+$> python -m myProject.app
 ```
 5. **Open your browser**
 The APIs will be exposed according the automatic interactive API documentation by [Swagger](https://swagger.io/).
