@@ -4,7 +4,6 @@ from apijet.utils.opfile import remove_project
 from apijet.commands.create import create
 from apijet.utils.opfile import load_project_file
 import argparse
-import os
 
 
 def test_parser():
