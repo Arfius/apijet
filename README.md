@@ -13,6 +13,17 @@
     <img src="https://github.com/Arfius/apijet/actions/workflows/test.yml/badge.svg" alt="ci/cd" style="max-width: 100%;"/>
   </a>
 
+<a href="https://pypi.org/project/apijet" target="_blank">
+    <img src="https://img.shields.io/pypi/v/apijet" alt="Package version">
+</a>
+
+<a href="https://pypi.org/project/apijet" target="_blank">
+    <img src="https://img.shields.io/pypi/pyversions/apijet.svg?color=%2334D058" alt="Supported Python versions">
+</a>
+
+
+</p>
+<p align="center">
   <a target="_blank"  href="https://twitter.com/alfarruggia">
     <img src="https://img.shields.io/twitter/follow/alfarruggia"/>
   </a>
@@ -150,7 +161,7 @@ The code is generated exploiting the following development stack :
 
 - **Pymongo** : Python library for working with MongoDB - [🔗](https://pymongo.readthedocs.io/en/stable/)
 
-- **FastApi** : RestApi framework -[🔗](https://fastapi.tiangolo.com/)
+- **apijet** : RestApi framework -[🔗](https://apijet.tiangolo.com/)
 
 - **Pydantic** : Python data validator & more - [🔗](https://pydantic-docs.helpmanual.io/)
 
