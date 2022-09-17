@@ -1,5 +1,4 @@
 import argparse
-from loguru import logger
 from pathlib import Path
 import json
 from apijet.utils.opfile import update_file_with_content
@@ -27,7 +26,7 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
     # check if already in a project folder
     if Path(f"{root_dir}/apijet.json").is_file() is True:
-        logger.warning("You are in an apijet project folder.")
+        print("🛑> You are in an apijet project folder.")
         return False
 
     # main folder path
@@ -35,12 +34,12 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
     # check if folder exists
     if Path(main_folder).is_dir():
-        logger.warning(f"Folder {main_folder} already exists.")
+        print(f"🛑> Folder {main_folder} already exists.")
         return False
 
     # create folder if not exist
     Path(f"{main_folder}").mkdir()
-    logger.info(f"Folder projet: {main_folder} create successfully.")
+    print(f"ℹ️ > Folder projet: {main_folder} create successfully.")
 
     # apijet file configuration
     project_file = f"{main_folder}/apijet.json"
@@ -64,11 +63,11 @@ def create(name: str, port: int, address: str, root_dir: str) -> bool:
 
     # create project folders
     Path(f"{main_folder}/{name}").mkdir()
-    logger.info(f"Folder projet: {main_folder} create successfully.")
+    print(f"ℹ️ > Folder projet: {main_folder} create successfully.")
 
     folders = ['core', 'models', 'routers', 'repository']
     for folder in folders:
-        logger.info(f"Folder projet: {main_folder}/{name}/{folder} create successfully.")
+        print(f"ℹ️ > Folder projet: {main_folder}/{name}/{folder} create successfully.")
         Path(f"{main_folder}/{name}/{folder}").mkdir()
         update_file_with_content(f"{main_folder}/{name}/{folder}/__init__.py", "")
 

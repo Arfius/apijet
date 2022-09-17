@@ -1,4 +1,3 @@
-from loguru import logger
 from pathlib import Path
 import os
 import json
@@ -9,14 +8,14 @@ def update_file_with_content(file_path: str, content: str) -> None:
         f = open(file_path, "w")
         f.write(content)
         f.close()
-        logger.info(f"File {file_path} create successfully.")
+        print(f"ℹ️ > File {file_path} create successfully.")
     except Exception as e:
-        logger.warning(f"Error during write file - {e}.")
+        print(f"🛑> Error during write file - {e}.")
 
 
 def check_write_permission(folder_path: str) -> bool:
     write_permission = os.access(folder_path, os.W_OK)
-    logger.info(f"Folder {folder_path} write permission {write_permission}")
+    print(f"ℹ️ > Folder {folder_path} write permission {write_permission}")
     return write_permission
 
 
@@ -37,7 +36,7 @@ def load_project_file(file_path: str) -> dict:
 
 def read_template(template_name: str) -> str:
     path = f"{os.path.dirname(__file__)}/../templates/{template_name}.template.py"
-    logger.info(path)
+    print(f"ℹ️ > {path}")
     return open(path, "r").read()
 
 

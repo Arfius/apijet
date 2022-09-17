@@ -11,7 +11,7 @@ import requests
 
 @pytest.fixture
 def run_project():
-    print("Run server")
+    print("🧪> Run server")
     os.chdir('./test_project')
     bashCommand = "python -m test_project.app"
     pro = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE, preexec_fn=os.setsid)
@@ -19,8 +19,8 @@ def run_project():
     sleep(5)  # wait server is up
     yield
     os.killpg(os.getpgid(pro.pid), SIGTERM)
-    os.chdir('../')
     sleep(5)  # wait server is down
+    os.chdir('../')
 
 
 def test_create_projet_with_endpoint():
@@ -39,7 +39,6 @@ def test_get_info_project():
 
 
 def test_reverse_endpoint(run_project):
-    pass
     from test_project.test_project.models.test_endpoint import test_endpointBase
     message = "hello world"
     t_e = test_endpointBase(text=message)

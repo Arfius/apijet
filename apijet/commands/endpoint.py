@@ -1,5 +1,4 @@
 import argparse
-from loguru import logger
 from pathlib import Path
 import os
 import json
@@ -21,17 +20,17 @@ to the project')
 
 def add(name: str, root_dir: str, database: bool) -> bool:
     # main folder path
-    logger.info(f"{os.getcwd()}")
+    print(f"ℹ️ > {os.getcwd()}")
     project_file_path = f"{root_dir}/apijet.json"
-    logger.info(f"Project folder {project_file_path}.")
+    print(f"ℹ️ > Project folder {project_file_path}.")
 
     # check if in project folder
     if Path(project_file_path).is_file() is False:
-        logger.warning("This is not an apijet project.")
+        print("🛑> This is not an apijet project.")
         return False
 
     project_file = load_project_file(project_file_path)
-    logger.info(f"Project {project_file['name']} loaded.")
+    print(f"ℹ️ > Project {project_file['name']} loaded.")
     project_name = project_file['name']
     collection = name
 
@@ -41,23 +40,23 @@ def add(name: str, root_dir: str, database: bool) -> bool:
                                                    project_name=project_name)
         update_file_with_content(f"{root_dir}/{project_name}/repository/{name}.py",
                                  database_content)
-        logger.info(f"Collection Manager for {name} endpoint created.")
+        print(f"ℹ️ > Collection Manager for {name} endpoint created.")
 
     has_db = '_db' if database else ''
     core_content = read_template(f'core{has_db}')
     core_content = core_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", core_content)
-    logger.info(f"Core for {name} endpoint created.")
+    print(f"ℹ️ > Core for {name} endpoint created.")
 
     model_content = read_template(f'model{has_db}')
     model_content = model_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/models/{name}.py", model_content)
-    logger.info(f"Model for {name} endpoint created.")
+    print(f"ℹ️ > Model for {name} endpoint created.")
 
     router_content = read_template(f'router{has_db}')
     router_content = router_content.format(endpoint_name=collection, project_name=project_name)
     update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", router_content)
-    logger.info(f"Router for {name} endpoint created.")
+    print(f"ℹ️ > Router for {name} endpoint created.")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-import",
                                  f"from {project_name}.routers.{name} import {name}_router")
