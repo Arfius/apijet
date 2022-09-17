@@ -9,8 +9,8 @@
 
 <p align="center">
   
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg">
-    <img src="https://github.com/Arfius/apijet/actions/workflows/apijet.yml/badge.svg" alt="ci/cd" style="max-width: 100%;"/>
+  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Arfius/apijet/actions/workflows/test.yml/badge.svg">
+    <img src="https://github.com/Arfius/apijet/actions/workflows/test.yml/badge.svg" alt="ci/cd" style="max-width: 100%;"/>
   </a>
 
   <a target="_blank"  href="https://twitter.com/alfarruggia">
