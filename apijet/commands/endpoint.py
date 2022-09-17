@@ -13,8 +13,9 @@ def add_parser(sub_parsers: argparse):
 to the project')
     create_parser.set_defaults(action='endpoint')
     create_parser.add_argument('--add', type=str, help="endpoint name")
-    create_parser.add_argument('--database', action='store_true', help="endpoint name")
-    create_parser.add_argument('--remove', type=str, help="endpoint name")
+    create_parser.add_argument('--database', action='store_true', help="say that the endpoint\
+ needs database support")
+    create_parser.add_argument('--remove', type=str, help="not supported yet")
     return sub_parsers
 
 
