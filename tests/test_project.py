@@ -16,16 +16,18 @@ def run_project():
     os.chdir('./test_project')
     bashCommand = "python test_project/app.py"
     pid = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE).pid
-    print('wait 2 seconds to warm up the server...')
-    sleep(2)
+    print('wait 5 seconds to warm up the server...')
+    sleep(5)
     yield
     kill(pid, SIGKILL)
     print(f'Process {pid} killed')
+    os.chdir('../')
 
 
 def test_create_projet_with_endpoint():
     assert create('test_project', 1234, '127.0.0.1', './') is True
     assert add('test_endpoint', './test_project', False) is True
+    assert add('test_endpoint_db', './test_project', True) is True
 
 
 def test_get_info_project():
@@ -42,10 +44,14 @@ def test_reverse_endpoint(run_project):
     message = "hello world"
     t_e = test_endpointBase(text=message)
     x = requests.post('http://127.0.0.1:1234/test_endpoint_reverse', json=t_e.dict())
-    x.status_code == 200
+    assert x.status_code == 200
     assert x.json()['text'] == message[::-1]
 
 
+def test_reverse_endpoint_db(run_project):
+    x = requests.get('http://127.0.0.1:1234/test_endpoint_db_get_all')
+    assert x.status_code == 200
+
+
 def test_remove_project():
-    os.chdir('../')
     assert remove('./test_project') is True
