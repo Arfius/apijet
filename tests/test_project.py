@@ -20,6 +20,7 @@ def run_project():
     yield
     os.killpg(os.getpgid(pro.pid), SIGTERM)
     sleep(5)  # wait server is down
+    os.chdir('../')
 
 
 def test_create_projet_with_endpoint():
@@ -38,7 +39,6 @@ def test_get_info_project():
 
 
 def test_reverse_endpoint(run_project):
-    pass
     from test_project.test_project.models.test_endpoint import test_endpointBase
     message = "hello world"
     t_e = test_endpointBase(text=message)
