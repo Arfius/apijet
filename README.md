@@ -52,7 +52,7 @@ $> apijet create --name myProject --port 9090 --address 127.0.0.1
 $> cd my_projet
 ```
 3. **Add and endpoint.**
-The endpoint can also need database support, in this case, you pass the **--database** parameter. If you need database support, you make sure that __mongodb__ is running. Consider a Docker container to deploy an instance in a short time [(see here)](#mongodb-container).
+The endpoint can also need database support, in this case, you pass the **--database** parameter and Apijet will generate the code for **CRUD** basic operation for the endpoint. If you need database support, you make sure that __mongodb__ is running. Consider a Docker container to deploy an instance in a short time [(see here)](#mongodb-container).
 ```
 $> apijet endpoint --name myEndpoint
 ```
