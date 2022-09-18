@@ -4,3 +4,5 @@ pip list --format=freeze > requirements.txt
 VERSION=$(python apijet/version.py)
 echo "Creating build for verison $VERSION"
 python -m build --outdir ./output/$VERSION
+
+# python3 -m twine upload 
