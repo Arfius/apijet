@@ -61,7 +61,8 @@ def add(name: str, root_dir: str, database: bool) -> bool:
 
     router_content = read_template(f'router{has_db}')
     router_content = router_content.format(endpoint_name=collection, project_name=project_name)
-    update_file_with_content(f"{root_dir}/{project_name}/routers/{name.lower()}.py", router_content)
+    update_file_with_content(f"{root_dir}/{project_name}/routers/{name.lower()}.py",
+                             router_content)
     print(f"ℹ️ > Router for {name} endpoint created.")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-import",
