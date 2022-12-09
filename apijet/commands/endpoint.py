@@ -44,28 +44,28 @@ def add(name: str, root_dir: str, database: bool) -> bool:
         database_content = read_template('database')
         database_content = database_content.format(collection=collection,
                                                    project_name=project_name)
-        update_file_with_content(f"{root_dir}/{project_name}/repository/{name}.py",
+        update_file_with_content(f"{root_dir}/{project_name}/repository/{name.lower()}.py",
                                  database_content)
         print(f"ℹ️ > Collection Manager for {name} endpoint created.")
 
     has_db = '_db' if database else ''
     core_content = read_template(f'core{has_db}')
     core_content = core_content.format(endpoint_name=collection, project_name=project_name)
-    update_file_with_content(f"{root_dir}/{project_name}/core/{name}.py", core_content)
+    update_file_with_content(f"{root_dir}/{project_name}/core/{name.lower()}.py", core_content)
     print(f"ℹ️ > Core for {name} endpoint created.")
 
     model_content = read_template(f'model{has_db}')
     model_content = model_content.format(endpoint_name=collection, project_name=project_name)
-    update_file_with_content(f"{root_dir}/{project_name}/models/{name}.py", model_content)
+    update_file_with_content(f"{root_dir}/{project_name}/models/{name.lower()}.py", model_content)
     print(f"ℹ️ > Model for {name} endpoint created.")
 
     router_content = read_template(f'router{has_db}')
     router_content = router_content.format(endpoint_name=collection, project_name=project_name)
-    update_file_with_content(f"{root_dir}/{project_name}/routers/{name}.py", router_content)
+    update_file_with_content(f"{root_dir}/{project_name}/routers/{name.lower()}.py", router_content)
     print(f"ℹ️ > Router for {name} endpoint created.")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-import",
-                                 f"from {project_name}.routers.{name} import {name}_router")
+                                 f"from {project_name}.routers.{name.lower()} import {name}_router")
 
     append_text_to_file_with_key(f"{root_dir}/{project_name}/app.py", "apijet-router-include",
                                  f"app.include_router({name}_router)")

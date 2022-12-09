@@ -17,17 +17,17 @@ def test_parser():
 
 def test_add_endpoint_database():
     assert create('test_project', 5083, '127.0.0.1', './') is True
-    assert add('test_endpoint', './test_project', True) is True
+    assert add('TestEndpoint', './test_project', True) is True
 
 
 def test_add_endpoint_no_database():
-    assert add('test_endpoint_no_db', './test_project', False) is True
+    assert add('TestEndpointNoDB', './test_project', False) is True
 
 
 def test_file_projetc_updated():
     file_project = load_project_file('./test_project/apijet.json')
-    assert 'test_endpoint' in file_project['endpoints']
-    assert 'test_endpoint_no_db' in file_project['endpoints']
+    assert 'TestEndpoint' in file_project['endpoints']
+    assert 'TestEndpointNoDB' in file_project['endpoints']
     assert len(file_project['endpoints']) == 2
 
 
