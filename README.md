@@ -71,18 +71,18 @@ These steps generate a follow folder and file structure:
 |-- myProject
 |   |-- core
 |   |   |
-|   |   `-- myEndpoint.py
+|   |   `-- myendpoint.py
 |   |-- database
 |   |   |-- dbmanager.py
 |   |   |-- message.py
-|   |   |-- myEndpoint.py
+|   |   |-- myendpoint.py
 |   |   `-- pyobjectid.py
 |   |-- models
 |   |   |
-|   |   `-- myEndpoint.py
+|   |   `-- myendpoint.py
 |   |-- routers
 |   |   |
-|   |   `-- myEndpoint.py
+|   |   `-- myendpoint.py
 |   `-- app.py
 `-- apijet.json
 ```
