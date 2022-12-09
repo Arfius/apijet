@@ -50,7 +50,9 @@ def add(name: str, root_dir: str, database: bool) -> bool:
 
     has_db = '_db' if database else ''
     core_content = read_template(f'core{has_db}')
-    core_content = core_content.format(endpoint_name=collection, project_name=project_name)
+    core_content = core_content.format(endpoint_name=collection, project_name=project_name,
+                                       import_name=collection.lower())
+
     update_file_with_content(f"{root_dir}/{project_name}/core/{name.lower()}.py", core_content)
     print(f"ℹ️ > Core for {name} endpoint created.")
 
@@ -60,7 +62,8 @@ def add(name: str, root_dir: str, database: bool) -> bool:
     print(f"ℹ️ > Model for {name} endpoint created.")
 
     router_content = read_template(f'router{has_db}')
-    router_content = router_content.format(endpoint_name=collection, project_name=project_name)
+    router_content = router_content.format(endpoint_name=collection, project_name=project_name,
+                                           import_name=collection.lower())
     update_file_with_content(f"{root_dir}/{project_name}/routers/{name.lower()}.py",
                              router_content)
     print(f"ℹ️ > Router for {name} endpoint created.")

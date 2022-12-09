@@ -1,11 +1,11 @@
 from typing import List
 from {project_name}.models.message_db import MessageDB
-from {project_name}.models.{endpoint_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
-from {project_name}.repository.{endpoint_name} import get_{endpoint_name}
-from {project_name}.repository.{endpoint_name} import save_{endpoint_name}
-from {project_name}.repository.{endpoint_name} import update_{endpoint_name}
-from {project_name}.repository.{endpoint_name} import get_all_{endpoint_name}
-from {project_name}.repository.{endpoint_name} import delete_{endpoint_name}
+from {project_name}.models.{import_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
+from {project_name}.repository.{import_name} import get_{endpoint_name}
+from {project_name}.repository.{import_name} import save_{endpoint_name}
+from {project_name}.repository.{import_name} import update_{endpoint_name}
+from {project_name}.repository.{import_name} import get_all_{endpoint_name}
+from {project_name}.repository.{import_name} import delete_{endpoint_name}
 
 
 class {endpoint_name}Core:
