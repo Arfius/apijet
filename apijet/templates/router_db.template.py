@@ -1,8 +1,8 @@
 from typing import List
 from urllib import response
 from fastapi import APIRouter, HTTPException, Depends
-from {project_name}.models.{endpoint_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
-from {project_name}.core.{endpoint_name} import {endpoint_name}Core
+from {project_name}.models.{import_name} import {endpoint_name}BaseDB, {endpoint_name}FullDB
+from {project_name}.core.{import_name} import {endpoint_name}Core
 from {project_name}.models.message_db import MessageDB
 
 

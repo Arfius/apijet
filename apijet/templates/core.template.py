@@ -1,4 +1,4 @@
-from {project_name}.models.{endpoint_name} import {endpoint_name}Base
+from {project_name}.models.{import_name} import {endpoint_name}Base
 
 
 class {endpoint_name}Core:
