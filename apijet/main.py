@@ -3,6 +3,7 @@ from apijet.commands.create import add_parser as add_parser_create
 from apijet.commands.create import create
 from apijet.commands.endpoint import add_parser as add_parser_endpoint
 from apijet.commands.endpoint import add
+from apijet.commands.endpoint import remove as remove_endopoint
 from apijet.commands.remove import remove
 from apijet.commands.remove import add_parser as add_parser_remove
 from apijet.version import __version__
@@ -28,6 +29,11 @@ def main():
     elif args.action == 'endpoint':
         if args.add:
             add(args.add, current_path,  args.database)
+        elif args.remove:
+            print("ℹ️ > Are you sure you want to delete the endpoint?")
+            answer = input("[y/N]")
+            if answer.lower() == 'y':
+                remove_endopoint(args.remove, current_path)
     elif args.action == 'remove':
         print("ℹ️ > Are you sure you want to delete the project?")
         answer = input("[y/N]")
