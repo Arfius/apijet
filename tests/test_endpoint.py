@@ -1,8 +1,9 @@
 from apijet.commands.endpoint import add
 from apijet.commands.endpoint import add_parser
-from apijet.utils.opfile import remove_project
+from apijet.commands.endpoint import remove as remove_endpoint
 from apijet.commands.create import create
 from apijet.utils.opfile import load_project_file
+from apijet.utils.opfile import remove_project
 import argparse
 
 
@@ -31,5 +32,6 @@ def test_file_projetc_updated():
     assert len(file_project['endpoints']) == 2
 
 
-def test_remove():
+def test_remove_endpoint():
+    assert remove_endpoint('test_endpoint', './test_project') is True
     assert remove_project('./test_project') is True
