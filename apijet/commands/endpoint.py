@@ -5,7 +5,9 @@ import json
 from apijet.utils.opfile import load_project_file
 from apijet.utils.opfile import update_file_with_content
 from apijet.utils.opfile import read_template
+from apijet.utils.opfile import remove_file
 from apijet.utils.opfile import append_text_to_file_with_key
+from apijet.utils.opfile import remove_text_from_file_by_text
 
 
 def add_parser(sub_parsers: argparse):
@@ -73,5 +75,44 @@ def add(name: str, root_dir: str, database: bool) -> bool:
     # save project file in root project folder
     project_file['endpoints'].append(name)
     update_file_with_content(project_file_path, json.dumps(project_file, indent=4))
+
+    return True
+
+
+def remove(name: str, root_dir: str):
+
+    # main folder path
+    print(f"ℹ️ > {os.getcwd()}")
+    project_file_path = f"{root_dir}/apijet.json"
+    print(f"ℹ️ > Project folder {project_file_path}.")
+
+    # check if in project folder
+    if Path(project_file_path).is_file() is False:
+        print("🛑> This is not an apijet project.")
+        return False
+
+    project_file = load_project_file(project_file_path)
+    project_name = project_file['name']
+
+    if name in project_file["endpoints"]:
+        remove_file(f"{root_dir}/{project_name}/repository/{name.lower()}.py")
+        remove_file(f"{root_dir}/{project_name}/core/{name.lower()}.py")
+        remove_file(f"{root_dir}/{project_name}/models/{name.lower()}.py")
+        remove_file(f"{root_dir}/{project_name}/routers/{name.lower()}.py")
+        print("ℹ️> Files removed")
+
+        remove_text_from_file_by_text(
+                f"{root_dir}/{project_name}/app.py",
+                f"from {project_name}.routers.{name.lower()} import {name}_router")
+
+        remove_text_from_file_by_text(
+                f"{root_dir}/{project_name}/app.py",
+                f"app.include_router({name}_router)")
+
+        # save project file in root project folder
+        project_file['endpoints'].remove(name)
+        update_file_with_content(project_file_path, json.dumps(project_file, indent=4))
+    else:
+        return False
 
     return True
