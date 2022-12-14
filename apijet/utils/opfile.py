@@ -48,3 +48,25 @@ def append_text_to_file_with_key(file_path, key, text):
             break
     content = ''.join(file_content)
     update_file_with_content(file_path, content)
+
+
+def remove_text_from_file_by_text(file_path, text):
+    file_content = open(file_path, "r").readlines()
+    for x in range(0, len(file_content)):
+        if text in file_content[x]:
+            file_content[x] = ""
+            break
+    content = ''.join(file_content)
+    update_file_with_content(file_path, content)
+
+
+def remove_file(file_path):
+    try:
+        path = Path(file_path)
+        if path.is_file():
+            os.remove(file_path)
+            return True
+        return False
+    except Exception as e:
+        print(f"🛑> Error during removing file - {e}.")
+        return False
