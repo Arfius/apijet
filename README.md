@@ -207,6 +207,6 @@ optional arguments:
   -h, --help       show this help message and exit
   --add ADD        endpoint name
   --database       say that the endpoint needs database support
-  --remove REMOVE  not supported yet
+  --remove REMOVE  endpoint name
   
 ```
