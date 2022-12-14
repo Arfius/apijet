@@ -33,5 +33,5 @@ def test_file_projetc_updated():
 
 
 def test_remove_endpoint():
-    assert remove_endpoint('test_endpoint', './test_project') is True
+    assert remove_endpoint('TestEndpoint', './test_project') is True
     assert remove_project('./test_project') is True
