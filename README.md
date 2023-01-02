@@ -21,6 +21,9 @@
     <img src="https://img.shields.io/pypi/pyversions/apijet.svg?color=%2334D058" alt="Supported Python versions">
 </a>
 
+<a href="https://pepy.tech/project/apijet" target="_blank">
+    <img src="https://static.pepy.tech/badge/apijet" alt="Total Downloads">
+</a>
 
 </p>
 <p align="center">
